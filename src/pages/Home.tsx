@@ -1,11 +1,15 @@
+import PromoSection from "@/components/PromoSection/PromoSection";
 import Hero from "../components/Hero/Hero";
 import ProductsList from "../components/ProductsList/ProductsList";
+import Newsletter from "@/components/Newsletter/Newsletter";
 
 const Home = () => {
     return (
         <>
             <Hero />
             <ProductsList category="outlet" />
+            <PromoSection />
+            <Newsletter />
         </>
     )
 }

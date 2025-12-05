@@ -22,7 +22,7 @@ const NAV_ITEMS: ReadonlyArray<NavItem> = [
 
 export default function Navbar() { // optymalized
     return (
-        <nav>
+        <nav className={styles.navbar}>
             <Link to='/' className={styles.logo}> WEARIFY </Link>
             <ul className={styles.navList}>
                 {NAV_ITEMS.map(item => (
