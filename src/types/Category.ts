@@ -1,0 +1,1 @@
+export type Category = "men" | "women" | "unisex" | "outlet";

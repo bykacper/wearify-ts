@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "T-shirt Classic White",
+    "price": 59.99,
+    "image": "/productsImages/shirt-1.png",
+    "description": "Klasyczna biała koszulka wykonana z bawełny premium.",
+    "bestseller": true,
+    "gender": "unisex",
+    "outlet": true
+  },
+  {
+    "id": 2,
+    "name": "T-shirt Urban Black",
+    "price": 64.99,
+    "image": "/productsImages/shirt-2.png",
+    "description": "Czarna koszulka w minimalistycznym stylu miejskim.",
+    "bestseller": false,
+    "gender": "men",
+    "outlet": true
+  },
+  {
+    "id": 3,
+    "name": "T-shirt Blue Sky",
+    "price": 54.99,
+    "image": "/productsImages/shirt-3.png",
+    "description": "Koszulka w jasnoniebieskim kolorze, idealna na lato.",
+    "bestseller": false,
+    "gender": "women",
+    "outlet": true
+  },
+  {
+    "id": 4,
+    "name": "T-shirt Retro Stripes",
+    "price": 69.99,
+    "image": "/productsImages/shirt-4.png",
+    "description": "Model inspirowany stylem retro z charakterystycznymi paskami.",
+    "bestseller": true,
+    "gender": "unisex",
+    "outlet": true
+  },
+  {
+    "id": 5,
+    "name": "T-shirt Dark Forest",
+    "price": 69.99,
+    "image": "/productsImages/shirt-5.png",
+    "description": "Butelkowa zieleń z miękkiej, oddychającej tkaniny.",
+    "bestseller": false,
+    "gender": "men",
+    "outlet": true
+  },
+  {
+    "id": 6,
+    "name": "T-shirt Sport Grey",
+    "price": 57.99,
+    "image": "/productsImages/shirt-6.png",
+    "description": "Sportowa koszulka z szybkoschnącego materiału.",
+    "bestseller": false,
+    "gender": "unisex",
+    "outlet": true
+  },
+  {
+    "id": 7,
+    "name": "T-shirt Sunrise Orange",
+    "price": 58.99,
+    "image": "/productsImages/shirt-7.png",
+    "description": "Energetyczna pomarańczowa koszulka idealna do casualowych stylówek.",
+    "bestseller": false,
+    "gender": "women",
+    "outlet": true
+  },
+  {
+    "id": 8,
+    "name": "T-shirt Deep Purple",
+    "price": 63.99,
+    "image": "/productsImages/shirt-8.png",
+    "description": "Modna koszulka w głębokim odcieniu fioletu.",
+    "bestseller": false,
+    "gender": "men",
+    "outlet": true
+  }
+]

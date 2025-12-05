@@ -1,8 +1,8 @@
 import type { HeroGalleryItem } from '../../types/HeroGalleryItem';
 import styles from './Hero.module.css';
-import heroImage1 from '@/assets/heroImage1.png';
-import heroImage2 from '@/assets/heroImage2.png';
-import heroImage3 from '@/assets/heroImage3.png';
+import heroImage1 from '@/assets/images/heroImage1.png';
+import heroImage2 from '@/assets/images/heroImage2.png';
+import heroImage3 from '@/assets/images/heroImage3.png';
 
 const GALLERY: ReadonlyArray<HeroGalleryItem> = [
     {
