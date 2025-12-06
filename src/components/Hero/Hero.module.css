@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding-block: 50px;
-    font-family: Arial;
+    font-family: var(--font_base);
 }
 
 .title {

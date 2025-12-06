@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import styles from './Header.module.css';
 import type { NavItem } from "../../types/NavItem";
 import CartButton from "./CartButton";
+import { useEffect, useState } from "react";
+import hamburgerImage from '@/assets/images/hamburgerMenu.png';
 
 const NAV_ITEMS: ReadonlyArray<NavItem> = [
     {
@@ -21,17 +23,47 @@ const NAV_ITEMS: ReadonlyArray<NavItem> = [
     }
 ]
 
-export default function Navbar() { // optymalized
+const MOBILE_BREAKPOINT = 1100;
+
+export default function Navbar() {
+    const [isMobile, setIsMobile] = useState(() =>
+        typeof window !== "undefined" ? window.innerWidth <= MOBILE_BREAKPOINT : false
+    );
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+        };
+
+        handleResize(); 
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <nav className={styles.navbar}>
-            <Link to='/' className={styles.logo}> WEARIFY </Link>
-            <ul className={styles.navList}>
-                {NAV_ITEMS.map(item => (
-                    <li key={item.id} className={styles.navItem}> <Link to={item.href}> {item.content} </Link> </li>
-                )
-                )}
-            </ul>
-            <CartButton />
+            <Link to="/" className={styles.logo}>WEARIFY</Link>
+
+            {!isMobile && (
+                <>
+                    <ul className={styles.navList}>
+                        {NAV_ITEMS.map(({id, href, content}) => (
+                            <li key={id} className={styles.navItem}>
+                                <Link to={href}>{content}</Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <CartButton />
+                </>
+            )}
+
+            {isMobile && (
+                <button className={styles.hamburgerButton} aria-label="Otwórz menu">
+                    <img src={hamburgerImage} alt="" className={styles.hamburgerImage} />
+                </button>
+            )}
         </nav>
-    )
+    );
 }

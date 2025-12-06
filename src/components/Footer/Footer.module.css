@@ -1,0 +1,120 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: solid #000 1px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-family: var(--font_base);
+    font-size: 16px;
+    height: 280px;
+    width: 25%;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 280px;
+    width: 75%;
+    text-align: center;
+    font-family: var(--font_base);
+}
+
+.links div {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-block: 60px;
+}
+
+.links h4 {
+    font-size: 18px;
+    padding-bottom: 20px;
+    width: 200px;
+    font-weight: normal;
+}
+
+.links li {
+    list-style-type: none;
+    margin-block: 10px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 70px;
+    width: 25%;
+    list-style-type: none;
+}
+
+.social img {
+    width: 25px;
+}
+
+.copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    background-color: #d6ff38;
+    border-left: solid #000 1px;
+    border-top: solid #000 1px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 850px) {
+    .footer {
+        display: block;
+    }
+
+    .contact,
+    .links,
+    .social,
+    .copy {
+        width: 100%;
+    }
+
+    .contact {
+        box-sizing: border-box;
+        height: 20vh;
+        align-items: start;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .links {
+        display: block;
+        height: min-content;
+        padding: 20px;
+        box-sizing: border-box;
+        border-bottom: solid #000 1px;
+    }
+
+    .links div {
+        padding-block: 20px;
+    }
+
+    .links li {
+        text-align: left;
+    }
+    
+    .links h4 {
+        width: 50vw;
+        text-align: left;
+        font-size: 25px;
+    }
+
+    .copy {
+        height: 15vw;
+        border-left: none;
+        border-top: solid #000 1px;
+    }
+}

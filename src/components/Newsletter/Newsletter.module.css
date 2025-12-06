@@ -9,7 +9,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-family: Arial, sans-serif;
+    font-family: var(--font_base);
     font-weight: 700;
     font-size: clamp(17px, 4vw, 41px);
 }
@@ -25,7 +25,7 @@
     z-index: 10;
     width: min(90%, 600px);
     background-color: white;
-    font-family: Arial, sans-serif;
+    font-family: var(--font_base);
     border-radius: 10px;
     overflow: hidden; 
     max-height: 90vh;

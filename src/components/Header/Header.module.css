@@ -32,7 +32,7 @@
 
 .navList {
     display: flex;
-    font-family: Arial;
+    font-family: var(--font_base);
     list-style: none;
 }
 
@@ -67,15 +67,30 @@
     width: 30px;
 }
 
+.hamburgerButton {
+    background-color: inherit;
+    border: none;
+}
+
+.hamburgerImage {
+    width: 40px;
+    height: auto;
+    padding: 5px;
+    object-fit: contain;
+    border: solid #000 1px;
+    border-radius: 100%;
+}
+
 @media (max-width: 1100px) {
     .navbar {
         background-color: var(--yellow);
-        padding: 0;
+        align-items: center;
+        padding-inline: 20px;
     }
 
     .logo {
         border-right: none;
-        width: 150px;
+        width: 140px;
     }
 
     .navList {
