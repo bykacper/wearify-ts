@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 40px 20px;
-    background-image: linear-gradient(to top, #d6ff38, white);
+    background-image: linear-gradient(to top, var(--yellow), white);
     gap: 40px;
 }
 

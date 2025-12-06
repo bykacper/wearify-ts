@@ -35,7 +35,7 @@
 }
 
 .closeModalWrapper {
-    background-color: #d6ff38;
+    background-color: var(--yellow);
     height: 50px;
     display: flex;
     align-items: center;
@@ -102,7 +102,7 @@
 
 .modalForm button {
     background-color: black;
-    color: #d6ff38;
+    color: var(--yellow);
     height: 50px;
     cursor: pointer;
     font-size: 20px;
