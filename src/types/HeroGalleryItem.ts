@@ -2,5 +2,6 @@ export type HeroGalleryItem = {
     id: number,
     src: string,
     alt: string,
-    decoding?: "async" | "auto" | "sync" | undefined
+    class: "small" | "large",
+    decoding?: "async" | "auto" | "sync";
 };

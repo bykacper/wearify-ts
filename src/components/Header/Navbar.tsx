@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from './Header.module.css';
 import type { NavItem } from "../../types/NavItem";
+import CartButton from "./CartButton";
 
 const NAV_ITEMS: ReadonlyArray<NavItem> = [
     {
@@ -30,6 +31,7 @@ export default function Navbar() { // optymalized
                 )
                 )}
             </ul>
+            <CartButton />
         </nav>
     )
 }

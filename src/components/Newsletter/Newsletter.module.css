@@ -1,0 +1,155 @@
+.newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.changeModalVisibilityButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(17px, 4vw, 41px);
+}
+
+.content {
+    text-decoration: underline;
+}
+
+.modal {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: min(90%, 600px);
+    background-color: white;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    overflow: hidden; 
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.closeModalWrapper {
+    background-color: #d6ff38;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 10px;
+}
+
+.closeModalButton {
+    background: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+}
+
+.modalContent img {
+    width: 45%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.modalContent p {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.modalForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modalForm label {
+    font-weight: 600;
+}
+
+.modalForm input {
+    width: 100%;
+    max-width: 330px;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modalForm button {
+    background-color: black;
+    color: #d6ff38;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.modalForm button:hover {
+    background-color: #333;
+}
+
+@media (max-width: 800px) {
+    .newsletter {
+        height: 75px;
+    }
+
+    .modal {
+        width: min(95%, 500px);
+    }
+
+    .modalContent {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .modalContent img {
+        display: none;
+    }
+
+    .modalForm {
+        width: 100%;
+        align-items: center;
+    }
+
+    .modalForm input {
+        max-width: 100%;
+    }
+
+    .modalForm button {
+        width: 100%;
+    }
+
+    .modalContent p {
+        font-size: 18px;
+    }
+}

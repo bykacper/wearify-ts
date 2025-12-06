@@ -9,29 +9,34 @@ const GALLERY: ReadonlyArray<HeroGalleryItem> = [
         id: 0,
         src: heroImage1,
         alt: "Modelka w sportowej koszulce Wearify",
+        class: "small"
     },
     {
         id: 1,
         src: heroImage2,
         alt: "Koszulka Wearify na wieszaku",
+        class: "large"
     },
     {
         id: 2,
         src: heroImage3,
         alt: "Model prezentujący sportową koszulkę",
+        class: "small"
     },
 ]
 
-export default function Hero() { // optymalized
+export default function Hero() { 
     return (
         <section className={styles.hero}>
-            <div>
+            <div className={styles.content}>
                 <h1 className={styles.title}> WEARIFY </h1>
                 <p className={styles.subtitle}> Nieograniczone możliwości </p>
             </div>
-            { GALLERY.map(item => (
-                <img key={item.id} src={item.src} alt={item.alt} />
-            ))}
+            <div className={styles.gallery}>
+                {GALLERY.map(item => (
+                    <img key={item.id} src={item.src} alt={item.alt} className={styles[item.class]}/>
+                ))}
+            </div>
         </section>
     )
 }
