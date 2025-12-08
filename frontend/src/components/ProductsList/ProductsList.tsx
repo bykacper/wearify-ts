@@ -11,9 +11,9 @@ export default function ProductsList({ category }: { category: Category }) {
   const filteredProducts: Product[] = (() => {
     switch (category) {
       case "men":
-        return products.filter((p) => p.gender === "men");
+        return products.filter((p) => p.gender === "men" || p.gender === "unisex");
       case "women":
-        return products.filter((p) => p.gender === "women");
+        return products.filter((p) => p.gender === "women" || p.gender === "unisex");
       case "outlet":
         return products.filter((p) => p.outlet === true);
       default:

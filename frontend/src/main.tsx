@@ -4,6 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import Home from './pages/Home';
 import './App.css';
+import Men from './pages/Men';
+import Women from './pages/Women';
+import Outlet from './pages/Outlet';
+import Product from './pages/Product';
 
 // optymalized
 
@@ -15,7 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    children: [{ index: true, element: <Home /> }],
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'men', element: <Men /> },
+      { path: 'women', element: <Women /> },
+      { path: 'outlet', element: <Outlet /> },
+      { path: ':productId', element: <Product />},
+      { path: ':category/:productId', element: <Product /> },
+    ],
   },
 ]);
 

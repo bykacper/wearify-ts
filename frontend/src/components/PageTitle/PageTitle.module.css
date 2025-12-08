@@ -1,0 +1,12 @@
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font_base);
+    font-weight: 700;
+    font-size: clamp(32px, 6vw, 65px);
+    background-image: linear-gradient(to top, var(--yellow), white);
+    height: clamp(150px, 20vw, 220px);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
