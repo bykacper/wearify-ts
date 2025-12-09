@@ -7,8 +7,6 @@ Projekt odzwierciedla realną architekturę frontendu, zawiera globalny stan apl
 
 Live Demo: https://wearify-74zkktb9y-kacpers-projects-fa4f57ba.vercel.app/
 
-Backend API: 
-
 ## ✨ Funkcje
 
 ### 🏠 Strona główna
