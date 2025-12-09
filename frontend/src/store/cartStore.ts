@@ -7,7 +7,6 @@ type CartState = {
   items: CartItem[];
   isOpen: boolean;
 
-  toggleCart: () => void;
   openCart: () => void;
   closeCart: () => void;
 
@@ -16,8 +15,6 @@ type CartState = {
 
   increaseQty: (id: number) => void;
   decreaseQty: (id: number) => void;
-
-  totalCost: () => number;
 };
 
 export const useCartStore = create<CartState>()(
@@ -26,7 +23,6 @@ export const useCartStore = create<CartState>()(
       items: [],
       isOpen: false,
 
-      toggleCart: () => set(state => ({ isOpen: !state.isOpen })),
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
 
@@ -50,21 +46,19 @@ export const useCartStore = create<CartState>()(
         get().openCart();
       },
 
-      removeItem: (id) => {
+      removeItem: (id) =>
         set(state => ({
           items: state.items.filter(i => i.id !== id),
-        }));
-      },
+        })),
 
-      increaseQty: (id) => {
+      increaseQty: (id) =>
         set(state => ({
           items: state.items.map(i =>
             i.id === id ? { ...i, qty: i.qty + 1 } : i
           ),
-        }));
-      },
+        })),
 
-      decreaseQty: (id) => {
+      decreaseQty: (id) =>
         set(state => {
           const item = state.items.find(i => i.id === id);
           if (!item) return state;
@@ -77,20 +71,13 @@ export const useCartStore = create<CartState>()(
 
           return {
             items: state.items.map(i =>
-              i.id === id ? { ...i, qty: i.qty - 1 } : i
+              i.id === id ? { ...i, qty: item.qty - 1 } : i
             ),
           };
-        });
-      },
-
-      totalCost: () =>
-        get().items.reduce((sum, item) => sum + item.price * item.qty, 0),
+        }),
     }),
     {
       name: "cart-storage",
-      partialize: (state) => ({
-        items: state.items,
-      }),
     }
   )
 );

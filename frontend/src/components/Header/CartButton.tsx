@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import { useCartStore } from '@/store/cartStore';
 
 export default function CartButton() {
-    const toogleCart = useCartStore(state => state.toggleCart);
+    const toogleCart = useCartStore(state => state.openCart);
 
     return (
         <button onClick={toogleCart} className={styles.cartButton} aria-label='Otwórz koszyk'>

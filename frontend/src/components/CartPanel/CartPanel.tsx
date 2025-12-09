@@ -6,11 +6,9 @@ import ProductCard from "./ProductCard";
 import Summary from "./Summary";
 
 export default function CartPanel() {
-    const { isOpen, closeCart, productsInCart } = useCartStore(state => ({
-        isOpen: state.isOpen,
-        closeCart: state.closeCart,
-        productsInCart: state.items
-    }));
+    const isOpen = useCartStore(state => state.isOpen);
+    const closeCart = useCartStore(state => state.closeCart);
+    const productsInCart = useCartStore(state => state.items);
 
     useLockBodyScroll(isOpen);
 
@@ -18,7 +16,7 @@ export default function CartPanel() {
         <>
             {isOpen && <Overlay onCloseOverlay={closeCart} />}
 
-            <aside className={`${styles.cartPanel} ${isOpen ? styles.cartPanelOpen : ""}`} aria-label="Panel koszyka">
+            <aside className={`${styles.cartPanel} ${isOpen ? styles.cartPanelOpen : ""}`}>
                 <h2 className={styles.title}> Koszyk ({productsInCart.length} artykułów) </h2>
                 <div className={styles.products}>
                     {productsInCart.length > 0 ? (

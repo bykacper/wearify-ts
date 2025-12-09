@@ -1,17 +1,14 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 
-export const useLockBodyScroll = (active: boolean) => {
-    useEffect(() => {
-        const original = document.body.style.overflow;
+export function useLockBodyScroll(active: boolean) {
+  useEffect(() => {
+    if (!active) return;
 
-        if(active) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = original
-        }
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-        return () => {
-            document.body.style.overflow = original;
-        }
-    }, [active])
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [active]);
 }

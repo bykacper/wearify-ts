@@ -1,6 +1,7 @@
 import { useCartStore } from '@/store/cartStore';
 import styles from './CartPanel.module.css';
 import type { CartItem } from '@/types/CartItem';
+import { formatPrice } from '@/utils/formatPrice';
 
 type ProductCardProps = {
     product: CartItem
@@ -9,7 +10,8 @@ type ProductCardProps = {
 const ProductCard = ({ product }: ProductCardProps) => {
     const increaseQty = useCartStore(store => store.increaseQty);
     const decreaseQty = useCartStore(store => store.decreaseQty);
-    const totalPrice = (product.price * product.qty).toFixed(2);
+
+    const totalPrice = formatPrice((product.price * product.qty));
 
     return (
         <article className={styles.productCard}>
