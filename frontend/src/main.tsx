@@ -9,6 +9,7 @@ const Women = lazy(() => import('@/pages/Women'));
 const Outlet = lazy(() => import('@/pages/Outlet'));
 const Product = lazy(() => import('@/pages/Product'));
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary';
 
 const queryClient = new QueryClient();
 
@@ -36,10 +37,12 @@ if (!rootElement) throw new Error("Root element not found");
 
 createRoot(rootElement).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<LoadingFallback />}>
-        <RouterProvider router={router} />
-      </Suspense>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <Suspense fallback={<LoadingFallback />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </QueryClientProvider>
+    </ErrorBoundary>
   </StrictMode>
 );
