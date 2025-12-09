@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import rawProducts from '@/assets/data/rawProducts.json';
 import ProductDetails from "@/components/ProductDetails/ProductDetails";
 

@@ -4,6 +4,7 @@ import type { NavItem } from "../../types/NavItem";
 import CartButton from "./CartButton";
 import { useEffect, useState } from "react";
 import hamburgerImage from '@/assets/images/hamburgerMenu.png';
+import HamburgerMenu from "./HamburgerMenu";
 
 const NAV_ITEMS: ReadonlyArray<NavItem> = [
     {
@@ -29,6 +30,12 @@ export default function Navbar() {
     const [isMobile, setIsMobile] = useState(() =>
         typeof window !== "undefined" ? window.innerWidth <= MOBILE_BREAKPOINT : false
     );
+
+    const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+
+    const toogleMobileMenuVisible = () => {
+        setMobileMenuVisible(pV => !pV);
+    }
 
     useEffect(() => {
         const handleResize = () => {
@@ -61,9 +68,11 @@ export default function Navbar() {
 
             {isMobile && (
                 <button className={styles.hamburgerButton} aria-label="Otwórz menu">
-                    <img src={hamburgerImage} alt="" className={styles.hamburgerImage} />
+                    <img onClick={toogleMobileMenuVisible} src={hamburgerImage} alt="" className={styles.hamburgerImage} />
                 </button>
             )}
+
+            {isMobile && mobileMenuVisible && <HamburgerMenu onClose={toogleMobileMenuVisible}/>}
         </nav>
     );
 }

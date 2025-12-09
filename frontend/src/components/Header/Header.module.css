@@ -81,6 +81,32 @@
     border-radius: 100%;
 }
 
+.hamburgerMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.hamburgerMenu li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.hamburgerMenu a {
+    color: white; 
+    text-decoration: none;
+    text-align: center;
+    font-size: clamp(30px, 3vw, 70px);
+    font-family: var(--font_base);    
+}
+
 @media (max-width: 1100px) {
     .navbar {
         background-color: var(--yellow);

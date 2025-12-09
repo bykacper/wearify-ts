@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Newsletter.module.css';
 import Modal from './Modal';
-import Overlay from '../Overlay/Overlay';
+import Overlay from '@/components/Overlay/Overlay';
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
 
 export default function Newsletter() {
