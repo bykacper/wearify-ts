@@ -1,9 +1,13 @@
-import { useState, type MouseEventHandler, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import styles from "./Newsletter.module.css";
 import modalImage from "@/assets/images/modalImage.png";
 import { useSendMail } from "@/api/useSendMail";
 
-export default function Modal({ onCloseModal }: { onCloseModal: MouseEventHandler }) {
+type ModalProps = {
+    onCloseModal: () => void;
+};
+
+export default function Modal({ onCloseModal }: ModalProps) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
@@ -18,13 +22,19 @@ export default function Modal({ onCloseModal }: { onCloseModal: MouseEventHandle
             onSuccess: () => {
                 setName("");
                 setEmail("");
-                onCloseModal(e as unknown as React.MouseEvent<HTMLButtonElement>);
+                onCloseModal();
             },
         });
+
     };
 
     return (
-        <section className={styles.modal} role="dialog" aria-modal="true">
+        <section
+            className={styles.modal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="newsletter-title"
+        >
             <div className={styles.closeModalWrapper}>
                 <button
                     className={styles.closeModalButton}
@@ -36,11 +46,12 @@ export default function Modal({ onCloseModal }: { onCloseModal: MouseEventHandle
             </div>
 
             <div className={styles.modalContent}>
-                <img src={modalImage} alt="" />
+                <img src={modalImage} alt="" aria-hidden="true" />
 
                 <div className={styles.modalForm}>
-                    <p>
-                        <strong>-10% na pierwsze zamówienie.</strong><br />
+                    <p id="newsletter-title">
+                        <strong>-10% na pierwsze zamówienie.</strong>
+                        <br />
                         Zapisz się do newslettera
                     </p>
 
@@ -72,9 +83,7 @@ export default function Modal({ onCloseModal }: { onCloseModal: MouseEventHandle
                         </button>
 
                         {sendMail.isError && (
-                            <p className={styles.errorMessage}>
-                                Wystąpił błąd. Spróbuj ponownie.
-                            </p>
+                            <p className={styles.errorMessage}>Wystąpił błąd. Spróbuj ponownie.</p>
                         )}
 
                         {sendMail.isSuccess && (
