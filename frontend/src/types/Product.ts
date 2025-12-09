@@ -6,5 +6,6 @@ export type Product = {
     description: string,
     bestseller: boolean,
     outlet: boolean,
-    gender: "men" | "women" | "unisex"
+    gender: string;
+
 }
