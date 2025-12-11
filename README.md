@@ -5,9 +5,7 @@ Wearify to w pełni działający projekt e-commerce stworzony w celu zaprezentow
 
 Projekt odzwierciedla realną architekturę frontendu, zawiera globalny stan aplikacji, obsługę koszyka, modal newslettera, routing, error boundary i responsywny layout.
 
-Live Demo: 
-
-Backend API: 
+Live Demo: https://wearify-74zkktb9y-kacpers-projects-fa4f57ba.vercel.app/
 
 ## ✨ Funkcje
 
