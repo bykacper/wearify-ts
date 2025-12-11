@@ -1,9 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
+const API = import.meta.env.VITE_API_URL; 
 
 export function useSendMail() {
   return useMutation({
     mutationFn: async (email: string) => {
-      const res = await fetch("http://localhost:5000/send", {
+      const res = await fetch(`${API}/send`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
