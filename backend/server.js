@@ -1,26 +1,20 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { Resend } = require('resend')
+const { Resend } = require("resend");
 
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:5173",      
+  "http://localhost:5173",
   "http://localhost:3000",
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-
-    if (origin.includes("vercel.app")) {
-      return callback(null, true);
-    }
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+    if (origin.includes("vercel.app")) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
 
     console.log("CORS blocked origin:", origin);
     return callback(new Error("Not allowed by CORS"));
@@ -36,7 +30,7 @@ app.use(express.json());
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.get("/", (req, res) => {
-  res.send("Wearify Mailer API is running with Resend");
+  res.send("Wearify Mailer API is running (Resend v2)");
 });
 
 app.post("/send", async (req, res) => {
@@ -50,19 +44,25 @@ app.post("/send", async (req, res) => {
   }
 
   try {
+    const sender = "Wearify <kgoluchowski112@gmail.com>";
+
     const result = await resend.emails.send({
-      from: "Wearify <noreply@wearify.dev>", 
+      from: sender,
       to: email,
       subject: "Dziękujemy za zapis!",
       html: `
         <p>Cześć <strong>${name || ""}</strong>!</p>
-        <p>Twój kod rabatowy: <strong>RABAT25</strong></p>
+        <p>Twój kod rabatowy to: <strong>RABAT25</strong></p>
       `,
     });
 
-    console.log("Email sent:", result?.id);
+    console.log("Resend sent:", result);
 
-    res.json({ success: true, id: result?.id });
+    res.json({
+      success: true,
+      message: "Mail processed by Resend.",
+    });
+
   } catch (err) {
     console.error("Resend error:", err);
     res.status(500).json({
@@ -72,7 +72,7 @@ app.post("/send", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Mailer (Resend) running on port ${PORT}`);
+  console.log(`Mailer running on port ${PORT}`);
 });
