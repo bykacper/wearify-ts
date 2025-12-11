@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const { Resend } = require('resend')
 
 const app = express();
 
@@ -29,22 +29,14 @@ const corsOptions = {
   allowedHeaders: ["Content-Type"],
 };
 
-
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); 
-
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.get("/", (req, res) => {
-  res.send("Wearify Mailer API is running");
+  res.send("Wearify Mailer API is running with Resend");
 });
 
 app.post("/send", async (req, res) => {
@@ -58,25 +50,29 @@ app.post("/send", async (req, res) => {
   }
 
   try {
-    await transporter.sendMail({
-      from: `"Wearify" <${process.env.EMAIL_USER}>`,
+    const result = await resend.emails.send({
+      from: "Wearify <noreply@wearify.dev>", 
       to: email,
       subject: "Dziękujemy za zapis!",
-      text: `Cześć ${name || ""}! Twój kod rabatowy: RABAT25`,
-      html: `<p>Cześć <strong>${name || ""}</strong>!</p><p>Twój kod rabatowy: <strong>RABAT25</strong></p>`
+      html: `
+        <p>Cześć <strong>${name || ""}</strong>!</p>
+        <p>Twój kod rabatowy: <strong>RABAT25</strong></p>
+      `,
     });
 
-    res.json({ success: true, message: "Mail sent!" });
+    console.log("Email sent:", result?.id);
+
+    res.json({ success: true, id: result?.id });
   } catch (err) {
-    console.error("Mailer error:", err);
+    console.error("Resend error:", err);
     res.status(500).json({
       success: false,
-      message: "Mail failed to send",
+      message: "Email failed to send",
     });
   }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Mailer running on port ${PORT}`);
+  console.log(`Mailer (Resend) running on port ${PORT}`);
 });
