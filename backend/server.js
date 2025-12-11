@@ -11,6 +11,12 @@ app.use(cors({
   allowedHeaders: "Content-Type"
 }));
 
+app.options("*", cors({
+  origin: "https://wearify-ts.vercel.app",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
